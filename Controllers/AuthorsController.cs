@@ -1,41 +1,28 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Library.Api.Controllers
+namespace Library.Api.Controllers;
+
+[ApiController]
+[Route("api/[controller]")]
+public class AuthorsController : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class AuthorsController : ControllerBase
-    {
     [HttpGet]
-        public async Task<IActionResult> GetAll()
-        {
-            return Ok();
-        }
+    public IActionResult GetAll()
+        => Ok(new { message = "Return all authors (TODO)" });
 
-        [HttpGet("{id:int}")]
-        public async Task<IActionResult> GetById(int id)
-        {
-            return Ok();
-        }
+    [HttpGet("{id:int}")]
+    public IActionResult GetById(int id)
+        => Ok(new { message = $"Return author {id} (TODO)" });
 
-        [HttpPost]
-        public async Task<IActionResult> Create([FromBody] CreateAuthorDto dto)
-        {
-            return CreatedAtAction(nameof(GetById), new { id = 1 }, null);
-        }
+    [HttpPost]
+    public IActionResult Create([FromBody] object body)
+        => CreatedAtAction(nameof(GetById), new { id = 1 }, new { message = "Created author (TODO)" });
 
-        [HttpPut("{id:int}")]
-        public async Task<IActionResult> Update(int id, [FromBody] UpdateAuthorDto dto)
-        {
-            return NoContent();
-        }
+    [HttpPut("{id:int}")]
+    public IActionResult Update(int id, [FromBody] object body)
+        => NoContent();
 
-        [HttpDelete("{id:int}")]
-        public async Task<IActionResult> Delete(int id)
-        {
-            return NoContent();
-        }
-    }
+    [HttpDelete("{id:int}")]
+    public IActionResult Delete(int id)
+        => NoContent();
 }
-
