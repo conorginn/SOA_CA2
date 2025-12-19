@@ -15,6 +15,8 @@ public class LibraryDbContext : DbContext
     public DbSet<Book> Books => Set<Book>();
     public DbSet<Member> Members => Set<Member>();
     public DbSet<Loan> Loans => Set<Loan>();
+    public DbSet<User> Users => Set<User>();
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -69,5 +71,9 @@ public class LibraryDbContext : DbContext
             .WithMany(b => b.Loans)
             .HasForeignKey(l => l.BookId)
             .OnDelete(DeleteBehavior.Restrict);
+
+        modelBuilder.Entity<User>()
+            .HasIndex(u => u.Username)
+            .IsUnique();
     }
 }
