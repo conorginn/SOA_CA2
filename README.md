@@ -148,8 +148,31 @@ Swagger UI:
 ---
 
 ## Testing
+
 ### Swagger
-Swagger UI was used for manual testing and demonstration during development.
+Swagger UI was used for manual testing during development.
+
+### Postman
+A Postman collection is included in the repository under `postman/` and demonstrates:
+- Register + Login (JWT)
+- CRUD for Authors / Books / Members / Loans
+- Negative tests (401 Unauthorized, 409 Conflict, invalid IDs)
+
+**How to run:**
+1. Import the collection: `postman/SOA_CA2.postman_collection.json`
+2. (Optional) Import environment: `postman/SOA_CA2.postman_environment.json`
+3. Set `baseUrl` in the environment to your API URL (e.g. `https://localhost:7089`)
+4. Open the collection → **Run 1 iteration**
+
+The login request stores the JWT into the environment variable `token` and all protected requests use `Bearer {{token}}`.
+
+### Unit Tests
+Unit tests are included in `Library.Tests` and cover key business rules (Auth + Loans).
+
+**Run all tests:**
+```bash
+dotnet test
+```
 
 ---
 
