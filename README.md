@@ -176,5 +176,9 @@ dotnet test
 
 ---
 
-## Deployment
-Deployed URL: **TODO** (add when deployed)
+## Deployment (Cloud)
+
+The API is deployed to Azure App Service.
+
+- **Base URL:** `https://soa-c6aneqg6bda5facf.westeurope-01.azurewebsites.net`
+- **Swagger UI:** `https://soa-c6aneqg6bda5facf.westeurope-01.azurewebsites.net/swagger/index.html`
